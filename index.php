@@ -85,6 +85,8 @@ include ("connections.php");
     if($fName && $mName && $lName && $address && $email && $section && $contact){
     
         $query = mysqli_query($connections, "INSERT INTO mytbl (fName, mName, lName, section, address, email, contact) VALUES('$fName','$mName','$lName','$section','$address','$email','$contact') ");
+   
+
 ?>
 
     
@@ -101,7 +103,55 @@ include ("connections.php");
         </div>
 
 <?php
+
+        echo "<script language='javascript'>alert ('New Record has been inserted!')</script>";
+        echo "<script> windows.location.href='index.php'</script>";
+
     }
+    $view_query = mysqli_query($connections,"SELECT * FROM mytbl");
+    
+    echo "<table border='2' width='50%'>";
+    echo "<tr>
+            <td>First Name</td>
+            <td>Middle Name</td>
+            <td>Last Name</td>
+            <td>Section</td>
+            <td>Address</td>
+            <td>Email</td>
+            <td>Contact</td>
+            <td>Option</td>
+
+        </tr>";
+
+    while($row = mysqli_fetch_assoc($view_query)){
+        $user_id = $row["id"];
+        $fName = $row["fName"];
+        $mName = $row["mName"];
+        $lName = $row["lName"];
+        $section = $row["section"];
+        $address = $row["address"];
+        $email = $row["email"];
+        $contact = $row["contact"];
+
+        echo "<tr>
+                <td>$fName   </td>
+                <td>$mName   </td>
+                <td>$lName   </td>
+                <td>$section </td>
+                <td>$address </td>
+                <td>$email   </td>
+                <td>$contact </td>
+                <td>
+                <a href='Edit.php? id=$user_id'>Update</a>
+                &nbsp;
+                <a href=''>Delete</a>
+                </td>
+
+              </tr>";
+
+        
+    }
+    echo "</table>";
 ?>
 
 <!-- CSS for centering the form -->
@@ -159,5 +209,27 @@ include ("connections.php");
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         background-color: #f9f9f9;
         font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 50%; /* Adjusted width to make the table smaller */
+        margin: 20px auto; /* Center the table horizontally */
+        font-size: 14px; /* Smaller font size */
+        text-align: left;
+    }
+    th, td {
+        padding: 8px; /* Reduced padding */
+        border: 1px solid #ddd; /* Slightly thinner border */
+    }
+    th {
+        background-color: #f2f2f2;
+        color: #333;
+    }
+    tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+    tr:hover {
+        background-color: #f1f1f1;
     }
 </style>
