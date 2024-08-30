@@ -80,156 +80,165 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <hr>
 
 <?php
-include ("connections.php");
+include("connections.php");
 
-    if($fName && $mName && $lName && $address && $email && $section && $contact){
-    
-        $query = mysqli_query($connections, "INSERT INTO mytbl (fName, mName, lName, section, address, email, contact) VALUES('$fName','$mName','$lName','$section','$address','$email','$contact') ");
-   
+if ($fName && $mName && $lName && $address && $email && $section && $contact) {
 
-?>
+    $query = mysqli_query($connections, "INSERT INTO mytbl (fName, mName, lName, section, address, email, contact) VALUES('$fName','$mName','$lName','$section','$address','$email','$contact')");
 
-    
+    echo "<div class='data-display'>";
+    echo "<h2>Submitted Information</h2>";
+    echo "<p><strong>First Name:</strong> " . htmlspecialchars($fName) . "</p>";
+    echo "<p><strong>Middle Name:</strong> " . htmlspecialchars($mName) . "</p>";
+    echo "<p><strong>Last Name:</strong> " . htmlspecialchars($lName) . "</p>";
+    echo "<p><strong>Section:</strong> " . htmlspecialchars($section) . "</p>";
+    echo "<p><strong>Address:</strong> " . htmlspecialchars($address) . "</p>";
+    echo "<p><strong>Email:</strong> " . htmlspecialchars($email) . "</p>";
+    echo "<p><strong>Contact Number:</strong> " . htmlspecialchars($contact) . "</p>";
+    echo "</div>";
 
-        <div class="data-display">
-            <h2>Submitted Information</h2>
-            <p><strong>First Name:</strong> <?php echo htmlspecialchars($fName); ?></p>
-            <p><strong>Middle Name:</strong> <?php echo htmlspecialchars($mName); ?></p>
-            <p><strong>Last Name:</strong> <?php echo htmlspecialchars($lName); ?></p>
-            <p><strong>Section:</strong> <?php echo htmlspecialchars($section); ?></p>
-            <p><strong>Address:</strong> <?php echo htmlspecialchars($address); ?></p>
-            <p><strong>Email:</strong> <?php echo htmlspecialchars($email); ?></p>
-            <p><strong>Contact Number:</strong> <?php echo htmlspecialchars($contact); ?></p>
-        </div>
+    echo "<script language='javascript'>alert('New Record has been inserted!')</script>";
+    echo "<script>window.location.href='index.php'</script>";
+}
+$view_query = mysqli_query($connections, "SELECT * FROM mytbl");
 
-<?php
+echo "<table border='2' width='50%'>";
+echo "<tr>
+        <th>First Name</th>
+        <th>Middle Name</th>
+        <th>Last Name</th>
+        <th>Section</th>
+        <th>Address</th>
+        <th>Email</th>
+        <th>Contact</th>
+        <th>Option</th>
+    </tr>";
 
-        echo "<script language='javascript'>alert ('New Record has been inserted!')</script>";
-        echo "<script> windows.location.href='index.php'</script>";
+while ($row = mysqli_fetch_assoc($view_query)) {
+    $user_id = $row["id"];
+    $fName = $row["fName"];
+    $mName = $row["mName"];
+    $lName = $row["lName"];
+    $section = $row["section"];
+    $address = $row["address"];
+    $email = $row["email"];
+    $contact = $row["contact"];
 
-    }
-    $view_query = mysqli_query($connections,"SELECT * FROM mytbl");
-    
-    echo "<table border='2' width='50%'>";
     echo "<tr>
-            <td>First Name</td>
-            <td>Middle Name</td>
-            <td>Last Name</td>
-            <td>Section</td>
-            <td>Address</td>
-            <td>Email</td>
-            <td>Contact</td>
-            <td>Option</td>
-
-        </tr>";
-
-    while($row = mysqli_fetch_assoc($view_query)){
-        $user_id = $row["id"];
-        $fName = $row["fName"];
-        $mName = $row["mName"];
-        $lName = $row["lName"];
-        $section = $row["section"];
-        $address = $row["address"];
-        $email = $row["email"];
-        $contact = $row["contact"];
-
-        echo "<tr>
-                <td>$fName   </td>
-                <td>$mName   </td>
-                <td>$lName   </td>
-                <td>$section </td>
-                <td>$address </td>
-                <td>$email   </td>
-                <td>$contact </td>
-                <td>
-                <a href='Edit.php? id=$user_id'>Update</a>
-                &nbsp;
-                <a href=''>Delete</a>
-                </td>
-
-              </tr>";
-
-        
-    }
-    echo "</table>";
+            <td>$fName</td>
+            <td>$mName</td>
+            <td>$lName</td>
+            <td>$section</td>
+            <td>$address</td>
+            <td>$email</td>
+            <td>$contact</td>
+            <td>
+                <a class='btn' href='Edit.php?id=$user_id'>Update</a>
+                <a class='btn delete' href='ConfirmDelete.php?id=$user_id'>Delete</a>
+            </td>
+          </tr>";
+}
+echo "</table>";
 ?>
 
-<!-- CSS for centering the form -->
+<!-- CSS for centering the form and styling buttons -->
 <style>
-  body {
-    display: center;  /* Changed from 'center' to 'flex' for proper alignment */
-    flex-direction: column;  /* Ensures vertical stacking of elements */
-    justify-content: center;  /* Centers content vertically */
-    align-items: center;  /* Centers content horizontally */
-    height: 100vh;
-    margin: 0;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    background-color: #e9ecef;  /* Adding a subtle background color for contrast */
-}
+    body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        background-color: #e9ecef;
+    }
 
-.form-container, .data-display {
-    width: 300px;
-    margin: 20px auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    background-color: #f9f9f9;
-}
+    .form-container, .data-display {
+        width: 300px;
+        margin: 20px auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        background-color: #f9f9f9;
+    }
 
-input[type="text"] {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
+    input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
 
-input[type="submit"] {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;  /* Added transition for smooth hover effect */
-}
+    input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
 
-input[type="submit"]:hover {
-    background-color: #45a049;  /* Slightly darker green on hover */
-}
+    input[type="submit"]:hover {
+        background-color: #45a049;
+    }
 
-.error {
-    color: red;
-    font-size: 12px;
-}
+    .error {
+        color: red;
+        font-size: 12px;
+    }
 
-table {
-    border-collapse: collapse;
-    width: 80%;  /* Adjusted width for better visibility */
-    margin: 20px auto;
-    font-size: 14px;
-    text-align: left;
-}
+    table {
+        border-collapse: collapse;
+        width: 80%;
+        margin: 20px auto;
+        font-size: 14px;
+        text-align: left;
+    }
 
-th, td {
-    padding: 8px;
-    border: 1px solid #ddd;
-}
+    th, td {
+        padding: 8px;
+        border: 1px solid #ddd;
+    }
 
-th {
-    background-color: #f2f2f2;
-    color: #333;
-}
+    th {
+        background-color: #f2f2f2;
+        color: #333;
+    }
 
-tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
+    tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
 
-tr:hover {
-    background-color: #f1f1f1;
-}
+    tr:hover {
+        background-color: #f1f1f1;
+    }
 
+    .btn {
+        display: inline-block;
+        padding: 5px 10px;
+        margin: 0 5px;
+        background-color: #4CAF50;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+        background-color: #45a049;
+    }
+
+    .btn.delete {
+        background-color: #ff4d4d;
+    }
+
+    .btn.delete:hover {
+        background-color: #ff1a1a;
+    }
 </style>

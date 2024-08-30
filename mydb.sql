@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 20, 2024 at 02:20 PM
+-- Generation Time: Aug 30, 2024 at 03:54 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -43,9 +43,13 @@ CREATE TABLE `mytbl` (
 --
 
 INSERT INTO `mytbl` (`id`, `fName`, `mName`, `lName`, `section`, `address`, `email`, `contact`) VALUES
-(1, 'Rey', 'Rivas', 'Malicse', 'INF-222', 'Lipa', 'email@email.com', '0908048034334'),
-(2, 'Rey', 'Rivas', 'Malicse', 'INF-222', 'Lipa', 'email@email.com', '0908048034334'),
-(3, 'Rey', 'Rivas', 'Malicse', 'INF-222', 'Lipa', 'email@email.com', '0908048034334');
+(22, 'Carlo Angelo', 'Pastrana', 'Arellano', 'INF-222', 'Bulbok', 'carlo@gmail.com', '09456258452'),
+(23, 'David', 'Super', 'Malibiran', 'INF-222', 'Tanauan, Malayo, Duluhan, Php40 fare', 'gmail@gmail.com', '09456258452'),
+(26, 'Jv', 'Nokage', 'Quisto', 'INF-222', 'Mataas na kahoy, tatawid ng dagat', 'jv@gmail.com', '09546258423'),
+(27, 'Joshua', 'Robers', 'Garcia', 'INF-222', 'Sicily, Italy', 'joshua@gmail.com', '09548751654'),
+(28, 'Lebron', 'Safron', 'Jame', 'INF-222', 'Los Angeles, Lakers', 'lebron@gmail.com', '09154862574'),
+(29, 'Maria', 'Narito', 'Daniela', 'INF-222', 'Sico, Lipa', 'dani@gmail.com', '09542687413'),
+(31, 'Crystal ', 'Clear ', 'Macasaet', 'INF-222', 'Mataas na kahoy', 'crystal@gmail.com', '09258456974');
 
 --
 -- Indexes for dumped tables
@@ -65,7 +69,7 @@ ALTER TABLE `mytbl`
 -- AUTO_INCREMENT for table `mytbl`
 --
 ALTER TABLE `mytbl`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
