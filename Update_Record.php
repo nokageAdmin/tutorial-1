@@ -2,18 +2,28 @@
 
 include ("connections.php");
 
-$user_id =$_POST["id"];
-$new_fName =$_POST["fName"];
-$new_mName =$_POST["mName"];
-$new_lName =$_POST["lName"];
-$new_section =$_POST["section"];
-$new_address =$_POST["address"];
-$new_email =$_POST["email"];
-$new_contact =$_POST["contact"];
+$user_id = $_POST["id"];
+$new_fName = $_POST["fName"];
+$new_mName = $_POST["mName"];
+$new_lName = $_POST["lName"];
+$new_section = $_POST["section"];
+$new_address = $_POST["address"];
+$new_email = $_POST["email"];
+$new_contact = $_POST["contact"];
 
+// Corrected SQL query with proper variable usage
+mysqli_query($connections, "UPDATE mytbl SET 
+    fName='$new_fName', 
+    mName='$new_mName', 
+    lName='$new_lName', 
+    section='$new_section', 
+    address='$new_address', 
+    email='$new_email', 
+    contact='$new_contact' 
+    WHERE id='$user_id'");
 
-mysqli_query($connections,"UPDATE mytbl SET fName='$new_fName', mName='$new_mName', lName='$lName', section='$section', address='$new_address', email='$section', contact='$contact' WHERE id='$user_id'");
-
+// Providing feedback to the user
 echo "<script language='javascript'>alert('Record has been updated!')</script>";
 echo "<script>window.location.href='index.php'</script>";
+
 ?>

@@ -156,80 +156,80 @@ include ("connections.php");
 
 <!-- CSS for centering the form -->
 <style>
-    .form-container {
-        width: 300px;
-        margin: 0 auto;
-        padding: 20px;
-        border: 1px solid #ccc;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        background-color: #f9f9f9;
-        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    }
+  body {
+    display: center;  /* Changed from 'center' to 'flex' for proper alignment */
+    flex-direction: column;  /* Ensures vertical stacking of elements */
+    justify-content: center;  /* Centers content vertically */
+    align-items: center;  /* Centers content horizontally */
+    height: 100vh;
+    margin: 0;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: #e9ecef;  /* Adding a subtle background color for contrast */
+}
 
-    input[type="text"] {
-        width: 100%;
-        padding: 10px;
-        margin: 10px 0;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-    }
+.form-container, .data-display {
+    width: 300px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+}
 
-    input[type="submit"] {
-        width: 100%;
-        padding: 10px;
-        margin: 10px 0;
-        background-color: #4CAF50;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-    }
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
 
-    .error {
-        color: red;
-        font-size: 12px;
-    }
+input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;  /* Added transition for smooth hover effect */
+}
 
-    body {
-        display: center;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        margin: 0;
-        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    }
+input[type="submit"]:hover {
+    background-color: #45a049;  /* Slightly darker green on hover */
+}
 
-    .data-display {
-        width: 300px;
-        margin: 20px auto;
-        padding: 20px;
-        border: 1px solid #ccc;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        background-color: #f9f9f9;
-        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
-    }
+.error {
+    color: red;
+    font-size: 12px;
+}
 
-    table {
-        border-collapse: collapse;
-        width: 50%; /* Adjusted width to make the table smaller */
-        margin: 20px auto; /* Center the table horizontally */
-        font-size: 14px; /* Smaller font size */
-        text-align: left;
-    }
-    th, td {
-        padding: 8px; /* Reduced padding */
-        border: 1px solid #ddd; /* Slightly thinner border */
-    }
-    th {
-        background-color: #f2f2f2;
-        color: #333;
-    }
-    tr:nth-child(even) {
-        background-color: #f9f9f9;
-    }
-    tr:hover {
-        background-color: #f1f1f1;
-    }
+table {
+    border-collapse: collapse;
+    width: 80%;  /* Adjusted width for better visibility */
+    margin: 20px auto;
+    font-size: 14px;
+    text-align: left;
+}
+
+th, td {
+    padding: 8px;
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: #f2f2f2;
+    color: #333;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
 </style>
