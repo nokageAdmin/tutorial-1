@@ -147,7 +147,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         background-color: #ff1a1a;
     }
 </style>
+<br>
 
+<?php include ("nav.php"); ?>
 
 <!-- HTML form -->
 <div class="form-container">
