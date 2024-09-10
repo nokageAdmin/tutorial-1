@@ -1,5 +1,4 @@
 <?php
-
 include("connections.php");
 
 $fName = $mName = $lName = $address = $email = $section = $contact = $password = $cpassword= "";
