@@ -144,7 +144,7 @@ echo "</table>";
 <!-- CSS for centering the form and styling buttons -->
 <style>
     body {
-        display: flex;
+        display: center;
         flex-direction: column;
         justify-content: center;
         align-items: center;
